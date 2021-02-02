@@ -8,8 +8,8 @@
   
   <listeners>
   
-  <listener class-name="com.qa.opencart.testlisteners.ExtentReportListener" />
-  <listener class-name="com.qa.opencart.testlisteners.TestAllureListener" />
+ <!--  <listener class-name="com.qa.opencart.testlisteners.ExtentReportListener" />
+  <listener class-name="com.qa.opencart.testlisteners.TestAllureListener" /> -->
   <listener class-name="com.qa.opencart.testlisteners.TesultsListener" />
   
   </listeners>
@@ -29,7 +29,7 @@
     </classes>
   </test> 
   
-    
+<!--     
   <test name="Registration Page Test">
     <classes>
       <class name="com.qa.opencart.tests.RegistrationPageTest"/>
@@ -40,7 +40,7 @@
     <classes>
       <class name="com.qa.opencart.tests.ProductInfoPageTest"/>
       </classes>
-  </test> <!-- Test -->
+  </test> --> <!-- Test -->
 
 
 

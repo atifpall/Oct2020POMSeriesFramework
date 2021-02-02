@@ -5,9 +5,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
-import java.util.logging.Logger;
+
 
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -18,42 +19,40 @@ import org.openqa.selenium.safari.SafariDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DriverFactory {
-	
-	private static final Logger LOGGER =Logger.getLogger(String.valueOf(DriverFactory.class));
-	
+
+	private static final Logger LOGGER = Logger.getLogger(String.valueOf(DriverFactory.class));
+
 	WebDriver driver;
 	Properties prop;
 	public static String highlight;
 	OptionsManager optionsManager;
-	
-	public static ThreadLocal<WebDriver> tlDriver= new ThreadLocal<>();
+
+	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
 
 	public WebDriver init_driver(Properties prop) {
 
 		String browserName = prop.getProperty("browser").trim();
-		//System.out.println("browser name is : " + browserName);
+		// System.out.println("browser name is : " + browserName);
 		LOGGER.info("browser name is : " + browserName);
 		highlight = prop.getProperty("highlight").trim();
 		optionsManager = new OptionsManager(prop);
-		
+
 		if (browserName.equals("chrome")) {
-			LOGGER.info("set up chrome driver");
+			LOGGER.info("setup chrome driver");
 			WebDriverManager.chromedriver().setup();
-			//driver = new ChromeDriver(optionsManager.getChromeOptions());
+			// driver = new ChromeDriver(optionsManager.getChromeOptions());
 			tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
-		}
-		else if (browserName.equals("firefox")) {
-			LOGGER.info("set up firefox driver");
+		} else if (browserName.equals("firefox")) {
+			LOGGER.info("setup firefox driver");
 			WebDriverManager.firefoxdriver().setup();
-			//driver = new FirefoxDriver(optionsManager.getFirefoxOptions());
+			// driver = new FirefoxDriver(optionsManager.getFirefoxOptions());
 			tlDriver.set(new FirefoxDriver(optionsManager.getFirefoxOptions()));
-		}
-		else if (browserName.equals("safari")) {
-			LOGGER.info("set up safari driver");
-			//driver = new SafariDriver();
+		} else if (browserName.equals("safari")) {
+			LOGGER.info("setup safari driver");
+			// driver = new SafariDriver();
 			tlDriver.set(new SafariDriver());
 		} else {
-			//System.out.println("please pass the correct browser name : " + browserName);
+			// System.out.println("please pass the correct browser name : " + browserName);
 			LOGGER.info("please pass the correct browser name : " + browserName);
 		}
 
@@ -63,7 +62,7 @@ public class DriverFactory {
 		return getDriver();
 
 	}
-	
+
 	public static synchronized WebDriver getDriver() {
 		return tlDriver.get();
 	}
@@ -84,11 +83,11 @@ public class DriverFactory {
 		return prop;
 
 	}
-	
+
 	public String getScreenshot() {
-		
-		File src = ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.FILE);
-		String path = System.getProperty("user.dir")+ "/screenshots"+ System.currentTimeMillis()+ ".png";
+
+		File src = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
+		String path = System.getProperty("user.dir") + "/screenshots" + System.currentTimeMillis() + ".png";
 		File destination = new File(path);
 		try {
 			FileUtils.copyFile(src, destination);
@@ -97,8 +96,7 @@ public class DriverFactory {
 		}
 		return path;
 	}
-	
-	
+
 //	public String getScreenshot() {
 //		
 //		File src = ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.FILE);
@@ -111,9 +109,5 @@ public class DriverFactory {
 //		}
 //		return path;
 //	}
-	
-	
-	
-	
-	
+
 }

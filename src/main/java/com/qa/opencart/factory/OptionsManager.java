@@ -1,8 +1,8 @@
 package com.qa.opencart.factory;
 
 import java.util.Properties;
-import java.util.logging.Logger;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 

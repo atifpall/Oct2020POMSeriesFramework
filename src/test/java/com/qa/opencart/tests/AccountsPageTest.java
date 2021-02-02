@@ -2,6 +2,7 @@ package com.qa.opencart.tests;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 
 import org.testng.annotations.BeforeClass;
@@ -21,6 +22,8 @@ import io.qameta.allure.Story;
 @Story("User Story - 301: Design Accounts Page for application with different test cases")
 public class AccountsPageTest extends BaseTest {
 	
+	private static final Logger LOGGER = Logger.getLogger(String.valueOf(AccountsPageTest.class));
+	
 	@BeforeClass
 	public void accountsPageSetup() {	
 		accountsPage = loginPage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
@@ -31,7 +34,8 @@ public class AccountsPageTest extends BaseTest {
 	@Test(priority=1)
 	public void accountsPageTitleTest() {
 		String title = accountsPage.getAccountsPageTitle();
-		System.out.println("title of the page is : " + title);
+		//System.out.println("title of the page is : " + title);
+		LOGGER.info("title of the page is : " + title);
 		Assert.assertEquals(title, Constants.ACCOUNTS_PAGE_TITLE);
 	}
 	

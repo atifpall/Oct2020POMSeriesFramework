@@ -1,0 +1,10 @@
+01 Feb 2021 22:41:24,762 TestNG-tests-2 - browser name is : chrome
+01 Feb 2021 22:41:24,762 TestNG-tests-1 - browser name is : chrome
+01 Feb 2021 22:41:24,766 TestNG-tests-2 - setup chrome driver
+01 Feb 2021 22:41:24,766 TestNG-tests-1 - setup chrome driver
+01 Feb 2021 22:41:25,205 TestNG-tests-2 - Getting chrome options
+01 Feb 2021 22:41:25,205 TestNG-tests-1 - Getting chrome options
+01 Feb 2021 22:41:43,163 TestNG-tests-1 - checking forgot password link
+01 Feb 2021 22:41:44,016 TestNG-tests-1 - getting page title : Account Login
+01 Feb 2021 22:41:44,024 TestNG-tests-1 - Login with :atifpall2007@gmail.com jst4automation
+01 Feb 2021 22:41:44,898 TestNG-tests-2 - title of the page is : My Account
