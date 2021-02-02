@@ -1,8 +1,10 @@
 package com.qa.opencart.pages;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.qa.opencart.factory.DriverFactory;
 import com.qa.opencart.utils.Constants;
 import com.qa.opencart.utils.ElementUtil;
 
@@ -10,6 +12,9 @@ import io.qameta.allure.Step;
 
 public class LoginPage {
 
+	private static final Logger LOGGER = Logger.getLogger(String.valueOf(LoginPage.class));
+
+	
 	private WebDriver driver;
 	private ElementUtil elementUtil;
 	
@@ -36,6 +41,7 @@ public class LoginPage {
 	@Step("get Login Page Title")
 	public String getLoginPageTitle() {
 		//return driver.getTitle();
+		LOGGER.info("getting login page title..");
 		return elementUtil.waitForPageTitlePresent(Constants.LOGIN_PAGE_TITLE, 5);
 		
 	}
@@ -43,6 +49,7 @@ public class LoginPage {
 	@Step("checking is Forgot Pwd Link is Present")
 	public boolean isForgotPwdLinkPresent() {
 		//return driver.findElement(forgotPwdLink).isDisplayed();
+		LOGGER.info("checking forgot password link is present..");
 		return elementUtil.doIsDisplayed(forgotPwdLink);
 	}
 	
